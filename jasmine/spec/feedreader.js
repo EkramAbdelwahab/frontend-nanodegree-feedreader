@@ -31,10 +31,10 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-		 it('has a URL defined and,this URL is not empty', function(feed) {
+		 it('has a URL defined and,this URL is not empty', function() {
 			 
 			allFeeds.forEach(function(feed) {
-				expect(feed.url)toBeDefined();
+				expect(feed.url).toBeDefined();
 				expect(feed.url.length).not.toBe(0);
 
 			});			
@@ -46,10 +46,10 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-		 it('has a name defined and,this name is not empty', function(feed) {
+		 it('has a name defined and,this name is not empty', function() {
 			 
 			allFeeds.forEach(function(feed) {
-				expect(feed.name)toBeDefined();
+				expect(feed.name).toBeDefined();
 				expect(feed.name.length).not.toBe(0);
 
 			});			
@@ -101,7 +101,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 		 
-		 beforeEach(function() {
+		 beforeEach(function(done) {
 			loadFeed(0, done);
 		 });
 		 it('are found', function() {
@@ -118,13 +118,13 @@ $(function() {
 		beforeEach(function(done) {
 			loadFeed(0, function() {
 				//storing old feed in oldFeed variable
-				oldFeed = $('.feed').html();
+				var oldFeed = $('.feed').html();
 				loadFeed(1, done);
 			});
 
 		});		
 		it('new feed is loaded', function() {
-			expect($(.feed).html()).not.toBe(oldFeed);
+			expect($('.feed').html()).not.toBe(oldFeed);
 			
 		});
 		 
